@@ -7,7 +7,8 @@ WORKDIR /code
 COPY . /code/
 
 RUN conda env create -f /code/conda_environment.yml && \
-	conda install -n fastai-vision -c fastai -c pytorch --no-deps --file /code/requirements.txt && \
+	conda install -n fastai-vision -c pytorch -c fastai --file /code/requirements.txt && \
+	conda install -n fastai-vision --no-deps -c fastai fastai && \
     conda clean --all --yes
 
 RUN echo "conda activate fastai-vision" >> ~/.bashrc
